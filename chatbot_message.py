@@ -6,13 +6,15 @@ from functions import (
     cancel_order, search_category, apply_discount, get_shipping_info
 )
 from tools import tools
+from dotenv import load_dotenv
+load_dotenv()
 
 session = requests.Session()
-FASTAPI_URL = "http://localhost:8000"
+FASTAPI_URL = os.getenv("FASTAPI_URL")
 
 client = OpenAI(
-    api_key="OLLAMA",
-    base_url="http://172.211.240.116/v1"
+    api_key= os.getenv("OPENAI_API_KEY"),
+    base_url= os.getenv("base_url")
 )
 
 system_prompt = """
